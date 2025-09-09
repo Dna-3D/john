@@ -1,0 +1,911 @@
+/* Political Portfolio CSS - Design System */
+
+/* Color Variables */
+:root {
+    --background: hsl(0, 0%, 100%);
+    --foreground: hsl(222.2, 84%, 4.9%);
+    --card: hsl(0, 0%, 100%);
+    --card-foreground: hsl(222.2, 84%, 4.9%);
+    --primary: hsl(220, 98%, 22%);
+    --primary-foreground: hsl(0, 0%, 98%);
+    --secondary: hsl(220, 14%, 96%);
+    --secondary-foreground: hsl(220, 9%, 46%);
+    --border: hsl(220, 13%, 91%);
+    --political-blue: hsl(220, 98%, 22%);
+    --political-blue-light: hsl(220, 70%, 40%);
+    --political-red: hsl(14, 100%, 57%);
+    --political-gold: hsl(45, 86%, 58%);
+    --political-gray: hsl(220, 9%, 46%);
+    --political-gray-light: hsl(220, 14%, 96%);
+    --shadow-card: 0 4px 12px -4px hsla(220, 98%, 22%, 0.15);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--foreground);
+    background-color: var(--background);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Navigation */
+.nav {
+    background-color: var(--background);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+    background-color: hsla(0, 0%, 100%, 0.8);
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+}
+
+.nav-brand {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--political-blue);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--political-gray);
+    text-decoration: none;
+    transition: var(--transition);
+    padding-bottom: 0.25rem;
+}
+
+.nav-link:hover {
+    color: var(--political-blue);
+}
+
+.nav-link.active {
+    color: var(--political-blue);
+    border-bottom: 2px solid var(--political-blue);
+}
+
+.nav-toggle {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--political-gray);
+}
+
+.nav-toggle:hover {
+    color: var(--political-blue);
+}
+
+.nav-toggle span {
+    display: block;
+    width: 1.5rem;
+    height: 2px;
+    background-color: currentColor;
+    margin: 0.25rem 0;
+    transition: var(--transition);
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile Navigation */
+.nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--background);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem;
+    gap: 1rem;
+    box-shadow: var(--shadow-card);
+}
+
+@media (min-width: 768px) {
+    .nav-links {
+        display: flex;
+    }
+    
+    .nav-toggle {
+        display: none;
+    }
+}
+
+/* Typography */
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 4rem;
+    }
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--political-red);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: hsl(14, 100%, 52%);
+}
+
+.btn-outline {
+    border-color: var(--political-blue);
+    color: var(--political-blue);
+    background-color: transparent;
+}
+
+.btn-outline:hover {
+    background-color: var(--political-blue);
+    color: white;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* Cards */
+.card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition);
+}
+
+.card:hover {
+    box-shadow: 0 10px 25px -5px hsla(220, 98%, 22%, 0.15);
+}
+
+.card-header {
+    padding: 1.5rem;
+}
+
+.card-content {
+    padding: 0 1.5rem 1.5rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--foreground);
+    margin-bottom: 0.5rem;
+}
+
+.card-description {
+    color: var(--political-gray);
+    line-height: 1.6;
+}
+
+/* Badge */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 9999px;
+    background-color: var(--political-gray-light);
+    color: var(--political-blue);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-image: url('src/assets/political-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: hsla(220, 98%, 22%, 0.7);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+}
+
+@media (min-width: 640px) {
+    .hero-buttons {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 768px) {
+    .hero-content h1 {
+        font-size: 4rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.5rem;
+    }
+}
+
+/* Stats Section */
+.stats {
+    padding: 4rem 0;
+    background-color: var(--political-gray-light);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--political-blue);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--foreground);
+    margin-bottom: 0.25rem;
+}
+
+.stat-description {
+    font-size: 0.875rem;
+    color: var(--political-gray);
+}
+
+@media (min-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .stat-number {
+        font-size: 3rem;
+    }
+}
+
+/* About Section */
+.about {
+    padding: 4rem 0;
+}
+
+.about-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-text h2 {
+    margin-bottom: 1.5rem;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+}
+
+.about-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.75rem;
+    color: var(--political-blue);
+}
+
+@media (min-width: 1024px) {
+    .about-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Recent Work / Works Grid */
+.recent-work {
+    padding: 4rem 0;
+    background-color: var(--political-gray-light);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    margin-bottom: 1rem;
+}
+
+.section-header p {
+    color: var(--political-gray);
+    max-width: 32rem;
+    margin: 0 auto;
+}
+
+.work-grid, .works-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.year {
+    font-size: 0.875rem;
+    color: var(--political-gray);
+}
+
+.section-cta {
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .work-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .works-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .works-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* CTA Section */
+.cta {
+    padding: 4rem 0;
+}
+
+.cta-content {
+    background: linear-gradient(135deg, var(--political-blue), var(--political-blue-light));
+    border-radius: 1rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: white;
+}
+
+.cta-content h2 {
+    margin-bottom: 1rem;
+}
+
+.cta-content p {
+    margin-bottom: 2rem;
+    max-width: 32rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+}
+
+@media (min-width: 640px) {
+    .cta-buttons {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 768px) {
+    .cta-content {
+        padding: 4rem 3rem;
+    }
+    
+    .cta-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .cta-content p {
+        font-size: 1.25rem;
+    }
+}
+
+/* Main Content */
+.main {
+    padding: 3rem 0;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-header h1 {
+    color: var(--foreground);
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    color: var(--political-gray);
+    max-width: 32rem;
+    margin: 0 auto;
+}
+
+/* Work Cards */
+.work-card .impact {
+    background-color: var(--political-gray-light);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+.impact strong {
+    color: var(--political-blue);
+    font-size: 0.875rem;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.impact span {
+    color: var(--political-gray);
+    font-size: 0.875rem;
+}
+
+/* Timeline */
+.timeline-section {
+    margin-bottom: 4rem;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 3rem;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--political-blue-light);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -2.5rem;
+    top: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--political-blue);
+    border-radius: 50%;
+    border: 4px solid var(--background);
+    box-shadow: var(--shadow-card);
+}
+
+.experience-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.organization {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--political-blue);
+}
+
+.achievements-list {
+    list-style: disc;
+    padding-left: 1.25rem;
+    color: var(--political-gray);
+}
+
+.achievements-list li {
+    margin-bottom: 0.25rem;
+}
+
+@media (min-width: 640px) {
+    .experience-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+/* Education */
+.education-section {
+    margin-bottom: 4rem;
+}
+
+.education-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.education-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .education-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Skills */
+.skills-section {
+    margin-bottom: 4rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.skill-item {
+    background-color: var(--political-gray-light);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    color: var(--political-blue);
+    font-weight: 500;
+}
+
+@media (min-width: 640px) {
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .skills-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Contact Page */
+.contact-grid {
+    display: grid;
+    gap: 3rem;
+    max-width: 72rem;
+    margin: 0 auto;
+}
+
+.contact-form-card {
+    width: 100%;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: var(--foreground);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--political-blue);
+    box-shadow: 0 0 0 3px hsla(220, 98%, 22%, 0.1);
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    gap: 1rem;
+}
+
+.contact-icon {
+    width: 3rem;
+    height: 3rem;
+    background-color: hsla(220, 70%, 40%, 0.1);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--political-blue);
+}
+
+.contact-details h3 {
+    font-weight: 500;
+    color: var(--foreground);
+    margin-bottom: 0.25rem;
+}
+
+.contact-details p {
+    color: var(--political-gray);
+    margin-bottom: 0.25rem;
+}
+
+.contact-details span {
+    font-size: 0.875rem;
+    color: var(--political-gray);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--political-blue);
+    color: white;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.social-link:hover {
+    background-color: var(--political-blue-light);
+}
+
+.social-link svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+@media (min-width: 640px) {
+    .form-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .contact-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--background);
+    padding: 2rem;
+    border-radius: 0.75rem;
+    max-width: 400px;
+    margin: 1rem;
+    position: relative;
+    text-align: center;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--political-gray);
+}
+
+.modal-close:hover {
+    color: var(--foreground);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--political-blue);
+    color: white;
+    padding: 2rem 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.footer-brand h3 {
+    margin-bottom: 0.5rem;
+}
+
+.footer-brand p {
+    color: var(--political-blue-light);
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--political-gold);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--political-blue-light);
+    padding-top: 2rem;
+    text-align: center;
+    color: var(--political-blue-light);
+}
+
+@media (min-width: 768px) {
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
